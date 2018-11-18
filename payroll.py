@@ -91,7 +91,7 @@ def getPayroll(fileName, notTodayDate=None):
                     if row[colDOB] != '':
                         elfDict[row[colName]] = row[colDOB]
                     else:
-                        print ("Error: date of birth empty for elve:",row[colName],"\n")
+                        print ("\nError: date of birth empty for elve:",row[colName])
     except OSError as e:
         print ("Error:",e)
 
@@ -99,7 +99,7 @@ def getPayroll(fileName, notTodayDate=None):
         try: 
             age  = getAge(dob, notTodayDate)
             if age <= 0:
-                print ("Elve [",name ,"]: age cannot be  0 or less\n")
+                print ("\nElve [",name ,"]: age cannot be  0 or less")
                 continue
             else:
                 mPay, mSalDistribution = getMontlyPay(age)
@@ -113,7 +113,7 @@ def getPayroll(fileName, notTodayDate=None):
                     for coKey, coVal in sorted(cval.items(), reverse=True):
                         print ("coin value:",coKey, "coin count:",coVal)
         except ValueError as e:
-            print ("\nError: Age format not correct for elve:[", name,"] correct format <YYYY-MM-DD>\n") 
+            print ("\nError: Age format not correct for elve:[", name,"] correct format <YYYY-MM-DD>") 
 
 
 def payroll():
