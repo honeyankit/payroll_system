@@ -58,6 +58,9 @@ def getAge(dateOfBirth, notTodayDate=None):
     #Use notTodayDate to calulate age. If not passed as cmdline parameter use today's date
     if notTodayDate != None:
         currentYear, currentMonth, currentDay = notTodayDate.split('-')
+        #Validating correct month and days else return false
+        if (int(currentMonth) < 1 or int(currentMonth) > 12 or int(currentDay)< 1 or int(currentDay) > 31):
+            return False
     else: 
     	today = str(date.today())
     	currentYear, currentMonth, currentDay = today.split('-')
@@ -105,10 +108,10 @@ def getPayroll(fileName, notTodayDate=None):
 
     for name, dob in elfDict.items():
         try: 
-            age  = getAge(dob, notTodayDate)
+            age = getAge(dob, notTodayDate)
             #check for age less or equal to 0
             if age <= 0:
-                print ("\nElve [",name ,"]: age cannot be  0 or less")
+                print ("\nElve [",name ,"]: age cannot be  0 or less or incorrect month or days")
                 continue
             else:
                 mPay, mSalDistribution = getMontlyPay(age)
