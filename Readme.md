@@ -6,4 +6,5 @@
 
 2. Command to run the script:
 python3 payroll.py <filename>
+
 python3 payroll.py <filename> -d <YYYY-MM-DD>
