@@ -103,7 +103,7 @@ def getPayroll(fileName, notTodayDate=None):
                 continue
             else:
                 mPay, mSalDistribution = getMontlyPay(age)
-                for key in mSalDistribution.keys():
+                for key in sorted(mSalDistribution.keys()):
                     coinDeno[key] = getCoinDenomination(mSalDistribution[key])
                 print ("Name:",name, ", DOB:",dob, ", Age:",age, ", Monthly Pay: $",mPay)
                 print ("Pay Distribution:", mSalDistribution)
