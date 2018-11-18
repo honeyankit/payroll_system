@@ -76,11 +76,18 @@ def getAge(dateOfBirth, notTodayDate=None):
 
 
 def getPayroll(fileName, notTodayDate=None):
+    """getPayroll: Function to load the file (format csv), create dictionary (key: Name of elve, value: date of birth),
+                   get the age, monthly pay, pay distribution, coin denomination and display the result
+         fileName: File containng the name and date of birth of elve.
+      noTodayDate: If this date is not passed as commandline paramter then today's date is used by default for calucalation of
+                   monthly pay.
+    """
     colTitle = colName = 0
     colDOB = 1
     elfDict = dict()
     coinDeno = dict()
     try:
+        #Opening csv file
         with open(fileName,'r') as csvFile:
             reader = cs.reader(csvFile,delimiter=',')
             for row in reader:
@@ -88,6 +95,7 @@ def getPayroll(fileName, notTodayDate=None):
                 if row[colTitle] == 'Name':
                     continue
                 else:
+                    #If the date of birth coloumn is not empty then adding (key: name of elve, value: date of birth) to dict.
                     if row[colDOB] != '':
                         elfDict[row[colName]] = row[colDOB]
                     else:
@@ -98,13 +106,16 @@ def getPayroll(fileName, notTodayDate=None):
     for name, dob in elfDict.items():
         try: 
             age  = getAge(dob, notTodayDate)
+            #check for age less or equal to 0
             if age <= 0:
                 print ("\nElve [",name ,"]: age cannot be  0 or less")
                 continue
             else:
                 mPay, mSalDistribution = getMontlyPay(age)
+                #Get the coin denomination
                 for key in sorted(mSalDistribution.keys()):
                     coinDeno[key] = getCoinDenomination(mSalDistribution[key])
+                #To display result
                 print ("\nName:",name, ", DOB:",dob, ", Age:",age, ", Monthly Pay: $",mPay)
                 print ("Pay Distribution:", mSalDistribution)
                 print ("Coin Denomination:")
