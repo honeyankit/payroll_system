@@ -105,11 +105,15 @@ def getPayroll(fileName, notTodayDate=None):
                 mPay, mSalDistribution = getMontlyPay(age)
                 for key in sorted(mSalDistribution.keys()):
                     coinDeno[key] = getCoinDenomination(mSalDistribution[key])
-                print ("Name:",name, ", DOB:",dob, ", Age:",age, ", Monthly Pay: $",mPay)
+                print ("\nName:",name, ", DOB:",dob, ", Age:",age, ", Monthly Pay: $",mPay)
                 print ("Pay Distribution:", mSalDistribution)
-                print ("Coin Denomination:", coinDeno,"\n")
+                print ("Coin Denomination:")
+                for ckey, cval in coinDeno.items():
+                    print (ckey,":")
+                    for coKey, coVal in sorted(cval.items(), reverse=True):
+                        print ("coin value:",coKey, "coin count:",coVal)
         except ValueError as e:
-            print ("Error: Age format not correct for elve:[", name,"] correct format <YYYY-MM-DD>\n") 
+            print ("\nError: Age format not correct for elve:[", name,"] correct format <YYYY-MM-DD>\n") 
 
 
 def payroll():
