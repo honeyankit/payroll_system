@@ -147,8 +147,8 @@ def payroll():
         getPayroll(fileName, notTodayDate)
     except IndexError as e:
        print ("Command options:")
-       print ("cmd: ./",sys.argv[0],"<filename>")
-       print ("cmd: ./",sys.argv[0],"<filename> -d <YYYY-MM-DD>")
+       print ("cmd: ",sys.argv[0],"<filename>")
+       print ("cmd: ",sys.argv[0],"<filename> -d <YYYY-MM-DD>")
        sys.exit(0)
 
 
