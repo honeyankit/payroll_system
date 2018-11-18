@@ -5,6 +5,6 @@
    d. Calculate the coin denominations of charity, retirement, candy funds.
 
 2. Command to run the script:
-python3 payroll.py <filename>
+./payroll.py <filename>
 
-python3 payroll.py <filename> -d <YYYY-MM-DD>
+./payroll.py <filename> -d <YYYY-MM-DD>
