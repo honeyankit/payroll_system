@@ -133,13 +133,13 @@ def getPayroll(fileName, notTodayDate=None):
 def payroll():
     try:
         argLen = len(sys.argv[1:])
-        fileName = sys.argv[1]
+        #command line arguments
+        fileName, action, notTodayDate = sys.argv[1], sys.argv[2], sys.argv[3]
         if argLen > 1:
-            action = sys.argv[2]
-            if action == '-d':
-                if sys.argv[3] == '':
+            if action != '-d':
+                raise IndexError
+            if cmd == '':
                     raise IndexError
-                notTodayDate = sys.argv[3]
         else:
             action = None
             notTodayDate = None
